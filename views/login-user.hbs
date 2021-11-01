@@ -1,0 +1,17 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active mx-auto" aria-current="page">Login User:</li>
+  </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-secondary alert-dismissible fade show w-100" role="alert">
+  {{alert}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<form class="row g-3 needs-validation w-50 mx-auto" method="POST" action="/login">
+  {{> user-form}}
+  <p>Don`t have an account? Please <a href="/register" class="text-dark mx-auto">Register!</a></p>
+</form>
