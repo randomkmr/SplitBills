@@ -1,0 +1,41 @@
+<p class="text-dark">Welcome <b>{{userEmail}}!</b></p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Please Select Your Group:</li>
+  </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-secondary alert-dismissible fade show w-100" role="alert">
+  {{alert}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<div class="row">
+  {{#each data}}
+  <div class="col-sm-3 mt-3">
+    <div class="card">
+      <div class="card-body">
+        <a href="/bills/{{this.group_id}}" class="stretched-link"></a>
+        <h3 class="card-title"><b>ID: {{this.group_id}}</b></h3>
+        <h6><i>{{this.name}}</i></h6>
+        <p class="card-text">{{this.content}}</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+<hr>
+
+<form class="row g-3 needs-validation w-25" method="POST" action="../accounts">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-secondary" type="submit">Add me to group</button>
+    </div>
+    <div style="width:100px">
+      <input type="number" min="1" class="form-control" id="floatingInput" value="{{this.group_id}}" placeholder=""
+        name="group_id" required>
+    </div>
+  </div>
+</form>

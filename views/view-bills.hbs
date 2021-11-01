@@ -1,0 +1,39 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/accounts" class="text-dark">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View Bills</li>
+    <li class="breadcrumb-item active" aria-current="page">{{group_id}}</li>
+  </ol>
+</nav>
+<p>There are {{totalUsers}} users in this group, so your split is: <i class="text-danger"><b>{{theSplit}}&euro;!</b></i>
+</p>
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#each data}}
+    <tr>
+      <th scope="data">{{this.id}}</th>
+      <td>{{this.description}}</td>
+      <td><i>{{this.amount}}&euro;</i></td>
+    </tr>
+    {{/each}}
+  <tfoot class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col " class="text-right" style="text-align:right">Total Amount:</th>
+      <th scope="col"><i><b>{{totalAmount}}&euro;</b></i></th>
+    </tr>
+  </tfoot>
+  </tbody>
+</table>
+
+<form class="row g-3 needs-validation" method="POST" action="/bills">
+  {{> bill-form}}
+</form>
